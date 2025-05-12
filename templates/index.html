@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3DEN LAB – DNA ↔ Music</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #39ff14;
+            font-family: "Courier New", monospace;
+            padding: 2rem;
+        }
+        h1 {
+            color: #00ffcc;
+        }
+        input[type="file"],
+        input[type="submit"] {
+            background-color: #111;
+            color: #39ff14;
+            border: 1px solid #39ff14;
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+        }
+        input[type="submit"]:hover {
+            background-color: #39ff14;
+            color: #000;
+            cursor: pointer;
+        }
+        span[title] {
+            cursor: help;
+            color: #00ffcc;
+            margin-left: 0.5rem;
+        }
+        a {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧬 3DEN LAB</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <h3>1. Binario ➜ DNA
+            <span title="Ogni coppia di bit diventa una base (00=A, 01=C, 10=G, 11=T)">❓</span>
+        </h3>
+        <input type="file" name="binary_file"><br><br>
+
+        <h3>2. DNA ➜ MIDI
+            <span title="Ogni base viene mappata su una nota MIDI (A=Do, C=Re, G=Mi, T=Fa)">❓</span>
+        </h3>
+        <input type="file" name="dna_file"><br><br>
+
+        <h3>3. MIDI ➜ DNA
+            <span title="Vengono lette solo alcune note specifiche: Do→A, Re→C, Mi→G, Fa→T">❓</span>
+        </h3>
+        <input type="file" name="midi_file"><br><br>
+
+        <input type="submit" value="Carica e converti">
+    </form>
+</body>
+</html>
