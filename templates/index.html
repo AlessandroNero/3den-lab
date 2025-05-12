@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <!-- Altri tag meta e link -->
-
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Reference static favicon -->
+    <link rel="icon" href="{{ url_for('static', path='favicon.png') }}" type="image/x-icon">
     <title>3DEN LAB – DNA ↔ Music</title>
     <style>
         body {
@@ -44,22 +42,58 @@
 <body>
     <h1>🧬 3DEN LAB</h1>
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <h3>1. Binario ➜ DNA
-            <span title="Ogni coppia di bit diventa una base (00=A, 01=C, 10=G, 11=T)">❓</span>
+        <h3>1. Binary ➜ DNA
+            <span title="Each pair of bits becomes a base (00=A, 01=C, 10=G, 11=T)">❓</span>
         </h3>
         <input type="file" name="binary_file"><br><br>
 
         <h3>2. DNA ➜ MIDI
-            <span title="Ogni base viene mappata su una nota MIDI (A=Do, C=Re, G=Mi, T=Fa)">❓</span>
+            <span title="Each DNA base is mapped to a musical note (A = Do, C = Re, G = Mi, T = Fa)">❓</span>
         </h3>
         <input type="file" name="dna_file"><br><br>
 
         <h3>3. MIDI ➜ DNA
-            <span title="Vengono lette solo alcune note specifiche: Do→A, Re→C, Mi→G, Fa→T">❓</span>
+            <span title="Certain notes are read and mapped back to DNA bases (Do→A, Re→C, Mi→G, Fa→T)">❓</span>
         </h3>
         <input type="file" name="midi_file"><br><br>
 
-        <input type="submit" value="Carica e converti">
+        <input type="submit" value="Upload and Convert">
     </form>
+
+    <br><br>
+    <h2>How DNA is Transformed into Music:</h2>
+    <p>
+        The process of converting DNA sequences into music is fascinating and involves a translation of genetic material into musical elements.
+    </p>
+    <h3>1. Binary to DNA</h3>
+    <p>
+        In the first step, binary data (0s and 1s) is converted into DNA. This is done by mapping pairs of bits to the four DNA bases: Adenine (A), Cytosine (C), Guanine (G), and Thymine (T). For example, "00" becomes A, "01" becomes C, "10" becomes G, and "11" becomes T.
+    </p>
+
+    <h3>2. DNA to Music</h3>
+    <p>
+        The DNA sequence is then mapped into musical notes. Each of the four bases (A, C, G, T) is associated with a musical note: 
+        - A = Do
+        - C = Re
+        - G = Mi
+        - T = Fa.
+    </p>
+    <p>
+        These notes are then used to create a musical melody. Each sequence of DNA, once translated, forms the structure for the music, where each base determines the pitch.
+    </p>
+
+    <h3>3. MIDI to DNA</h3>
+    <p>
+        In the reverse process, MIDI data representing musical notes can be converted back to DNA. This is done by reading specific notes and mapping them back to the DNA bases.
+    </p>
+    <p>
+        - Do → A
+        - Re → C
+        - Mi → G
+        - Fa → T
+    </p>
+    <p>
+        The MIDI file contains these notes, and by identifying them, we can recreate the DNA sequence that generated the melody.
+    </p>
 </body>
 </html>

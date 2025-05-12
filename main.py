@@ -1,13 +1,17 @@
-# main.py
 from fastapi import FastAPI, Request, UploadFile, Form
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 import shutil
 from pathlib import Path
 
 from dna_engine import encode_dna, dna_to_midi, midi_to_dna
 
 app = FastAPI()
+
+# Configurazione per servire file statici (come favicon)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
