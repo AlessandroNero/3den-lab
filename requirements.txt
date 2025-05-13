@@ -3,4 +3,4 @@ uvicorn
 python-multipart
 jinja2
 midiutil
-flask
+mido

@@ -1,0 +1,15 @@
+LOCUS       SCU49845     5028 bp    DNA             PLN       21-JUN-1999
+DEFINITION  Saccharomyces cerevisiae TCP1-beta gene.
+ACCESSION   U49845
+VERSION     U49845.1
+KEYWORDS    .
+SOURCE      yeast (Saccharomyces cerevisiae)
+  ORGANISM  Saccharomyces cerevisiae
+            Eukaryota; Fungi; Ascomycota; Saccharomycotina.
+FEATURES             Location/Qualifiers
+     gene            1..206
+                     /gene="gene1"
+ORIGIN      
+        1 atgagtaggc atggtggcga ggttggctgc tggtgcgcga ggcgtagctg aagcaaattc
+       61 ttatcatgaa gacgagagca cgggtgcggt gtgttgagtt ggctggcgaa atgtggacaa
+      //

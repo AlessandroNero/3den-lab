@@ -1,14 +1,17 @@
-from fastapi import FastAPI, Request, UploadFile
+from fastapi import FastAPI, Request, UploadFile, Form
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+import shutil
 from pathlib import Path
 
-from musical_mapper import dna_to_complex_midi  # Now points to advanced mapper
-from dna_engine import encode_dna, midi_to_dna
+from dna_engine import encode_dna, dna_to_midi, midi_to_dna
 
 app = FastAPI()
+
+# Configurazione per servire file statici (come favicon)
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
@@ -24,6 +27,7 @@ async def upload_files(
 ):
     output_path = Path("output")
     output_path.mkdir(exist_ok=True)
+
     result_message = ""
 
     if binary_file:
@@ -32,14 +36,14 @@ async def upload_files(
         dna_path = output_path / "encoded_dna.txt"
         with open(dna_path, "w") as f:
             f.write(dna_result)
-        result_message += f"✅ Binario → DNA: <a href='/download/{dna_path.name}'>Scarica</a><br>"
+        result_message += f"✅ File binario convertito in DNA: <a href='/download/{dna_path.name}'>Scarica</a><br>"
 
     if dna_file:
         contents = await dna_file.read()
         dna_str = contents.decode("utf-8")
         midi_path = output_path / "output.mid"
-        dna_to_complex_midi(dna_str, str(midi_path))
-        result_message += f"✅ DNA → MIDI: <a href='/download/{midi_path.name}'>Scarica</a><br>"
+        dna_to_midi(dna_str, str(midi_path))
+        result_message += f"✅ DNA convertito in MIDI: <a href='/download/{midi_path.name}'>Scarica</a><br>"
 
     if midi_file:
         with open("temp.mid", "wb") as f:
@@ -48,7 +52,7 @@ async def upload_files(
         dna_path = output_path / "midi_to_dna.txt"
         with open(dna_path, "w") as f:
             f.write(dna_result)
-        result_message += f"✅ MIDI → DNA: <a href='/download/{dna_path.name}'>Scarica</a><br>"
+        result_message += f"✅ MIDI convertito in DNA: <a href='/download/{dna_path.name}'>Scarica</a><br>"
 
     return HTMLResponse(f"<html><body>{result_message}<br><a href='/'>🔙 Torna indietro</a></body></html>")
 

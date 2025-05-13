@@ -1,26 +1,21 @@
-# 3DEN LAB - Documentazione
+# 🎼 DNA ↔ MIDI Conversion Engine
 
-Benvenuto in **3DEN LAB**, un laboratorio virtuale per la codifica e la decodifica di sequenze genetiche, l'analisi tramite DNA Computing e la generazione di musica elettronica da sequenze DNA.
+This FastAPI-based app allows users to explore the complex musical structures hidden in DNA using concepts from genetic computation and musical theory.
 
-## Come interagire con il server
+## Features
 
-Il server fornisce vari endpoint che puoi utilizzare per eseguire operazioni legate al DNA Computing. Ecco alcune delle opzioni principali:
+- 🔄 Convert binary data → DNA
+- 🎵 Sonify DNA using:
+  - **Regulatory regions** (tempo & instrument control)
+  - **Repetitive sequences** (loops, canons)
+  - **Mutations/SNPs** (dissonance, modulations)
+  - **Introns** (rests, ambient textures)
+- ⏎ Convert MIDI back into DNA
+- 💻 Simple web interface
 
-### 1. `/encode_dna`
-- **Descrizione**: Codifica una sequenza DNA in un formato binario.
-- **Metodo**: `GET`
-- **Esempio di richiesta**: `GET /encode_dna?sequence=ATGC`
+## Usage
 
-### 2. `/decode_dna`
-- **Descrizione**: Decodifica una sequenza binaria in DNA.
-- **Metodo**: `GET`
-- **Esempio di richiesta**: `GET /decode_dna?binary=101110`
-
-### 3. `/music_from_dna`
-- **Descrizione**: Trasforma una sequenza DNA in un file musicale MIDI.
-- **Metodo**: `GET`
-- **Esempio di richiesta**: `GET /music_from_dna?sequence=ATGC`
-
-### 4. `/help`
-- **Descrizione**: Mostra tutte le opzioni disponibili e i comandi.
-- **Metodo**: `GET`
+```bash
+pip install fastapi uvicorn mido python-multipart jinja2
+uvicorn main:app --reload
+Then open your browser at: http://127.0.0.1:8000
